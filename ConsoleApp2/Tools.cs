@@ -28,16 +28,6 @@ namespace ConsoleApp2
         {
             return debtors.Where(x => x.Debt <= 5000).ToList();
         }
-        //public static List<Debtor> DebtorsByNameLenght(List<Debtor> debtors)
-        //{
-        //    foreach (var item in debtors)
-        //    {
-        //        if (item.Phone.IndexOf("7") > -1)
-        //        {
-
-        //        }
-        //    }
-        //}
         public static List<Debtor> DebtorsBySeasonBirth(List<Debtor> debtors)
         {
             return debtors.Where(x => x.BirthDay.Month < 3 || x.BirthDay.Month > 11).ToList();
@@ -77,21 +67,58 @@ namespace ConsoleApp2
         }
         public static int DebtorsByYear(List<Debtor> debtors)
         {
-            var result = from x in debtors
-                         group x by x.BirthDay.Year;
-            int a = 0;
-            foreach (var item1 in result)
+           return debtors.GroupBy(x => x.BirthDay.Year).OrderByDescending(x => x.Count() ).Select(g => g.Key).First();
+        }
+        public static List<Debtor> DebtorsByDebtQuantity(List<Debtor> debtors)
+        {
+            return debtors.OrderByDescending(x => x.Debt).Take(5).ToList();
+        }
+        public static int AllDept(List<Debtor> debtors)
+        {
+            return debtors.Sum(x => x.Debt);
+        }
+        public static List<Debtor> DebtorsBySecondWar(List<Debtor> debtors)
+        {
+            return debtors.Where(x => x.BirthDay.Year >= 1939 && x.BirthDay.Year <= 1945).ToList();
+        }
+        public static List<Debtor> DebtorsByNumber(List<Debtor> debtors)
+        {
+            return debtors.Where(x => x.Phone.Distinct().Count() == 11).ToList();
+        }
+        public static List<Debtor> DebtorsByPayment(List<Debtor> debtors)
+        {
+            List<Debtor> tmp = new List<Debtor>();
+            foreach (var item in debtors)
             {
-                a = item1.Key;
-                foreach (var item2 in result)
+                if (item.BirthDay.Month == DateTime.Now.Month)
                 {
-                    if (item1.Count() < item2.Count())
+                    if (item.BirthDay.Day < DateTime.Now.Day)
                     {
-                        a = item2.Key;
+                        if (item.Debt <= 12 * 500) tmp.Add(item);
+                    }
+                    else
+                    {
+                        if (item.Debt >= 500) tmp.Add(item);
                     }
                 }
+                else if (item.BirthDay.Month < DateTime.Now.Month)
+                {
+                    if ((12 + item.BirthDay.Month - DateTime.Now.Month)*500 >= item.Debt) tmp.Add(item);
+                }
+                else
+                {
+                    if ((item.BirthDay.Month - DateTime.Now.Month)*500 >= item.Debt) tmp.Add(item);
+                }
             }
-            return a;
+            return tmp;
+        }
+        public static List<Debtor> DebtorsBySmile(List<Debtor> debtors)
+        {
+            return debtors.Where(x => x.FullName.ToLower().Contains("s") &&
+            x.FullName.ToLower().Contains("m") &&
+            x.FullName.ToLower().Contains("i") &&
+            x.FullName.ToLower().Contains("l") &&
+            x.FullName.ToLower().Contains("e")).ToList();
         }
     }
 }

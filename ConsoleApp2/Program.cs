@@ -55,28 +55,25 @@ namespace ConsoleApp2
             };
         static void Main(string[] args)
         {
-            //2) rhyta.com ve ya dayrep.com domenlerinde emaili olan borclulari cixartmag
+            //1) rhyta.com ve ya dayrep.com domenlerinde emaili olan borclulari cixartmag
             var result = Tools.DebtorsByEmail(debtors, "rhyta.com");                      //never comment this line
             //Tools.ShowResult(result);
             //result = Tools.DebtorsByEmail(debtors, "dayrep.com");
             //Tools.ShowResult(result);
 
-            //3) Yashi 26 - dan 36 - ya qeder olan borclulari cixartmag
+            //2) Yashi 26 - dan 36 - ya qeder olan borclulari cixartmag
             //result = Tools.DebtorsByAge(debtors);
             //Tools.ShowResult(result);
 
-            //4) Borcu 5000 - den cox olmayan borclularic cixartmag
+            //3) Borcu 5000 - den cox olmayan borclularic cixartmag
             //result = Tools.DebtorsByDebt(debtors);
             //Tools.ShowResult(result);
 
-            //5) Butov adi 18 simvoldan cox olan ve telefon nomresinde 2 ve ya 2 - den cox 7 reqemi olan borclulari cixartmaq
-
-
-            //7) Qishda anadan olan borclulari cixardmaq
+            //4) Qishda anadan olan borclulari cixardmaq
             //result = Tools.DebtorsBySeasonBirth(debtors);
             //Tools.ShowResult(result);
 
-            //8) Borcu, umumi borclarin orta borcunnan cox olan borclulari cixarmaq ve evvel familyaya gore sonra ise meblegin azalmagina gore sortirovka etmek
+            //5) Borcu, umumi borclarin orta borcunnan cox olan borclulari cixarmaq ve evvel familyaya gore sonra ise meblegin azalmagina gore sortirovka etmek
             //result = Tools.DebtorsByAverageDebt(debtors);
             //var result1 = from x in result
             //         orderby x.FullName.Split('.').Last() descending
@@ -87,37 +84,43 @@ namespace ConsoleApp2
             //              select x;
             //Tools.ShowResult(result1.ToList());
 
-            //9) Telefon nomresinde 8 olmayan borclularin yalniz familyasin, yashin ve umumi borcun meblegin cixarmaq
+            //5) Telefon nomresinde 8 olmayan borclularin yalniz familyasin, yashin ve umumi borcun meblegin cixarmaq
             //var result1 = Tools.DebtorsByPhone(debtors);
             //foreach (var item in result1)
             //{
             //    Console.WriteLine(item);
             //}
 
-            //11)Adinda ve familyasinda hec olmasa 3 eyni herf olan borclularin siyahisin cixarmaq ve onlari elifba sirasina gore sortirovka elemek
+            //7)Adinda ve familyasinda hec olmasa 3 eyni herf olan borclularin siyahisin cixarmaq ve onlari elifba sirasina gore sortirovka elemek
             //result = Tools.DebtorsByName(debtors);
             //Tools.ShowResult(result);
 
-            //13)borclulardan en coxu hansi ilde dogulubsa hemin ili cixartmaq
-            var result1 = Tools.DebtorsByYear(debtors);
-            Console.WriteLine(result1);
+            //8)borclulardan en coxu hansi ilde dogulubsa hemin ili cixartmaq
+            //var result1 = Tools.DebtorsByYear(debtors);
+            //Console.WriteLine(result1);
 
-            //14)Borcu en boyuk olan 5 borclunun siyahisini cixartmaq
+            //9)Borcu en boyuk olan 5 borclunun siyahisini cixartmaq
+            //result = Tools.DebtorsByDebtQuantity(debtors);
+            //Tools.ShowResult(result);
 
+            //10)Butun borcu olanlarin borcunu cemleyib umumi borcu cixartmaq
+            //Console.WriteLine(Tools.AllDept(debtors));
 
-            //15)Butun borcu olanlarin borcunu cemleyib umumi borcu cixartmaq
+            //11)2ci dunya muharibesin gormush borclularin siyahisi cixartmaq
+            //result = Tools.DebtorsBySecondWar(debtors);
+            //Tools.ShowResult(result);
 
+            //12)Nomresinde tekrar reqemler olmayan borclularin ve onlarin borcunun meblegin cixartmaq
+            //result = Tools.DebtorsByNumber(debtors);//Nomresinde tekrar reqemler olmayan borclu yoxdur siyahida
+            //Tools.ShowResult(result);
 
-            //16)2ci dunya muharibesin gormush borclularin siyahisi cixartmaq
+            //13)Tesevvur edek ki,butun borclari olanlar bugunden etibaren her ay 500 azn pul odeyecekler.Oz ad gunune kimi borcun oduyub qurtara bilenlerin siyahisin cixartmaq
+            //result = Tools.DebtorsByPayment(debtors);
+            //Tools.ShowResult(result);
 
-
-            //18)Nomresinde tekrar reqemler olmayan borclularin ve onlarin borcunun meblegin cixartmaq
-
-
-            //19)Tesevvur edek ki,butun borclari olanlar bugunden etibaren her ay 500 azn pul odeyecekler.Oz ad gunune kimi borcun oduyub qurtara bilenlerin siyahisin cixartmaq
-
-
-            //20)Adindaki ve familyasindaki herflerden "smile" sozunu yaza bileceyimiz borclularin siyahisini cixartmaq
+            //24)Adindaki ve familyasindaki herflerden "smile" sozunu yaza bileceyimiz borclularin siyahisini cixartmaq
+            //result = Tools.DebtorsBySmile(debtors);
+            //Tools.ShowResult(result);
         }
     }
     class Debtor
